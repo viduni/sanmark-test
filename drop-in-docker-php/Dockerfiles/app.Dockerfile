@@ -1,10 +1,8 @@
-FROM php:8.1.0-fpm-alpine3.14
+FROM php:8.1.13-fpm-bullseye
 ARG UID
-RUN apk --update add shadow
 RUN usermod -u $UID www-data && groupmod -g $UID www-data
-RUN apk --update add sudo
+RUN apt-get update && apt-get install -y sudo
 RUN echo "www-data ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-RUN apk --update add composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN docker-php-ext-install pdo_mysql
-RUN apk add --update npm
-RUN apk add --update make
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && npm i -g npm
