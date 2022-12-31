@@ -13,7 +13,7 @@
                 </div>
                 <div>
                     <button class="p-6 text-gray-900 bg-indigo-500 w-full">
-                        <a href="">Create Note</a>
+                        <a href="{{route('note.create')}}">Create Note</a>
                     </button>
                 </div>
                 <div class="mt-0.5">
