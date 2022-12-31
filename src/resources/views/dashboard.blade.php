@@ -11,6 +11,16 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div>
+                    <button class="p-6 text-gray-900 bg-indigo-500 w-full">
+                        <a href="">Create Note</a>
+                    </button>
+                </div>
+                <div class="mt-0.5">
+                    <button class="p-6 text-gray-900 bg-indigo-500 w-full">
+                        View Notes
+                    </button>
+                </div>
             </div>
         </div>
     </div>
