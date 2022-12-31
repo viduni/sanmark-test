@@ -2,61 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\NoteHandler;
+use App\Models\Note;
+use Exception;
 use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $notes = Note::all()->toArray();
+        return view('note.index')
+        ->with([
+            'notes' => $notes,
+        ])
+        ;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('note.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->toArray();
+        try {
+            $note = $this->getNoteHandler()->createNote($data);
+
+            $request->session()->flash('message', ['type' => 'success', 'description' => 'Note is created.']);
+
+            $data = $note->toArray();
+;
+            return redirect()->route('note.index');
+  
+
+        } catch(Exception $ex) {
+            // return redirect()->back();
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $note = Note::find($id)->get()->toArray();
+
+        // dd(888,$note);
+        return view('note.edit', ['note'=>$note, 'id'=> $note['id']]);
     }
 
     /**
@@ -68,7 +59,7 @@ class NoteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd(222);
     }
 
     /**
@@ -80,5 +71,10 @@ class NoteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function getNoteHandler(): NoteHandler
+    {
+        return app(NoteHandler::class);
     }
 }

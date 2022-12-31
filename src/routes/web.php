@@ -29,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('note', NoteController::class);
+
+    Route::prefix('note')
+        ->name('note.')
+        ->group(function (){
+            Route::patch('updateNote/{id}',[NoteController::class, 'updateNote'])->name('updateNote');
+        });
 });
 
 require __DIR__.'/auth.php';

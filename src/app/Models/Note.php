@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Note extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'notes';
 
-    use SoftDeletes;
+
+    protected $fillable = [
+        'title',
+        'description',
+    ];
 }

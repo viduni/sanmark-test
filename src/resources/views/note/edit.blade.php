@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create Note') }}
+            {{ __('Edit Note') }}
         </h2>
     </x-slot>
 
@@ -9,13 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("Create a note!") }}
+                    {{ __("Update a note!") }}
                 </div>
                 @if(session('message') && (session('message')['type']=='success'))
                 <span class="block mt-3 text-dark-grey">{!!session('message')['description']!!}</span>
                 @endif
-                
-                <form class="w-full max-w-lg p-6" method="POST" action="{{route('note.store')}}">
+                <form class="w-full max-w-lg p-6" method="PATCH" action="{{route('note.update', ['note' => $id])}}">
                 @csrf
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
@@ -28,6 +27,7 @@
                             type="text" 
                             placeholder=""
                             name="title"
+                            value="{{$note['title']}}"
                         >
                         </div>
                     </div>
@@ -42,7 +42,8 @@
                             type="text" 
                             placeholder=""
                             name="description"
-                        ></textarea>
+                            value="{{$note['description']}}"
+                        >{{$note['description']}}</textarea>
                         </div>
                     </div>
                     <div class="flex items-center justify-between">
