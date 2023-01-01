@@ -22,4 +22,4 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
       - run: docker images
-      # - run: docker push ghcr.io/viduni/sanmark-test/
+      - run: docker push ghcr.io/viduni/sanmark-test/build:latest
