@@ -28,6 +28,8 @@ jobs:
       # - run: docker tag ghcr.io/viduni/sanmark-test/app:latest app:latest || true
       # - run: docker tag ghcr.io/viduni/sanmark-test/static:latest static:latest || true
       # - run: docker tag ghcr.io/viduni/sanmark-test/proxy:latest proxy:latest || true
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
       - run: make build
       - run: docker images
       - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
