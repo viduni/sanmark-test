@@ -3,7 +3,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && npm i -g npm
 WORKDIR /var/www/html/
 COPY ./src/ .
-RUN ls -lah
-# RUN composer install
+RUN composer install
 # RUN npm install
 # RUN npm run build
