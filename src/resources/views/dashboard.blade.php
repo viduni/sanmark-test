@@ -12,14 +12,18 @@
                     {{ __("You're logged in!") }}
                 </div>
                 <div>
-                    <button class="p-6 text-gray-900 bg-indigo-500 w-full">
-                        <a href="{{route('note.create')}}">Create Note</a>
-                    </button>
+                    <a href="{{route('note.create')}}">
+                        <button class="p-6 text-gray-900 bg-indigo-500 w-full">
+                            Create Note
+                        </button>
+                    </a>
                 </div>
                 <div class="mt-0.5">
-                    <button class="p-6 text-gray-900 bg-indigo-500 w-full">
-                        View Notes
-                    </button>
+                    <a href="{{route('note.index')}}">
+                        <button class="p-6 text-gray-900 bg-indigo-500 w-full">
+                            View Notes
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

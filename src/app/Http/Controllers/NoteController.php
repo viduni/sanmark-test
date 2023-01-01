@@ -11,12 +11,8 @@ class NoteController extends Controller
 {
     public function index()
     {
-        $notes = Note::all()->toArray();
-        return view('note.index')
-        ->with([
-            'notes' => $notes,
-        ])
-        ;
+        $notes = Note::all();
+        return view('note.index', compact('notes'));
     }
 
     public function create()
@@ -32,9 +28,7 @@ class NoteController extends Controller
 
             $request->session()->flash('message', ['type' => 'success', 'description' => 'Note is created.']);
 
-            $data = $note->toArray();
-;
-            return redirect()->route('note.index');
+            return redirect()->route('note.edit', $note->id);
   
 
         } catch(Exception $ex) {
@@ -42,24 +36,31 @@ class NoteController extends Controller
         }
     }
 
-    public function edit($id)
+    public function show($id)
     {
-        $note = Note::find($id)->get()->toArray();
+        $note = Note::find((int)$id)->toArray();
 
-        // dd(888,$note);
-        return view('note.edit', ['note'=>$note, 'id'=> $note['id']]);
+        return view('note.show')
+            ->with([
+                'note' => $note,
+            ])
+        ;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function edit($id)
+    {
+        $note = Note::find((int)$id)->toArray();
+
+        return view('note.edit')
+            ->with([
+                'note' => $note,
+            ])
+        ;
+    }
+
     public function update(Request $request, $id)
     {
-        dd(222);
+        dd($request,$id);
     }
 
     /**
