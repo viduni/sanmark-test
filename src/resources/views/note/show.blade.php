@@ -14,7 +14,7 @@
                 @if(session('message') && (session('message')['type']=='success'))
                 <span class="block mt-3 text-dark-grey">{!!session('message')['description']!!}</span>
                 @endif
-                <form class="w-full max-w-lg p-6" method="post" action="{{route('note.update', ['note' => $note['id']])}}">
+                <form class="w-full max-w-lg p-6" method="post" action="{{route('note.update', $note->id)}}">
                 @csrf
                 @method('PATCH')
                     <div class="flex flex-wrap -mx-3 mb-6">
@@ -28,7 +28,7 @@
                             type="text" 
                             placeholder=""
                             name="title"
-                            value="{{$note['title']}}"
+                            value="{{$note->title}}"
                         >
                         </div>
                     </div>
@@ -43,8 +43,8 @@
                             type="text" 
                             placeholder=""
                             name="description"
-                            value="{{$note['description']}}"
-                        >{{$note['description']}}</textarea>
+                            value="{{$note->description}}"
+                        >{{$note->description}}</textarea>
                         </div>
                     </div>
                     <div class="flex items-center justify-between">

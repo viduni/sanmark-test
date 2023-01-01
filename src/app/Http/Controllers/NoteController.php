@@ -38,24 +38,16 @@ class NoteController extends Controller
 
     public function show($id)
     {
-        $note = Note::find((int)$id)->toArray();
+        $note = Note::find((int)$id);
 
-        return view('note.show')
-            ->with([
-                'note' => $note,
-            ])
-        ;
+        return view('note.show', compact('note')) ;
     }
 
     public function edit($id)
     {
-        $note = Note::find((int)$id)->toArray();
+        $note = Note::find((int)$id);
 
-        return view('note.edit')
-            ->with([
-                'note' => $note,
-            ])
-        ;
+        return view('note.edit', compact('note'));
     }
 
     public function update(Request $request, $id)
