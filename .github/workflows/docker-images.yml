@@ -30,11 +30,11 @@ jobs:
       # - run: docker tag ghcr.io/viduni/sanmark-test/proxy:latest proxy:latest || true
       - run: make build
       - run: docker images
-      # - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
+      - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
       # - run: docker tag app:latest ghcr.io/viduni/sanmark-test/app:latest
       # - run: docker tag static:latest ghcr.io/viduni/sanmark-test/static:latest
       # - run: docker tag proxy:latest ghcr.io/viduni/sanmark-test/proxy:latest
-      # - run: docker push ghcr.io/viduni/sanmark-test/build:latest
+      - run: docker push ghcr.io/viduni/sanmark-test/build:latest
       # - run: docker push ghcr.io/viduni/sanmark-test/app:latest
       # - run: docker push ghcr.io/viduni/sanmark-test/static:latest
       # - run: docker push ghcr.io/viduni/sanmark-test/proxy:latest
