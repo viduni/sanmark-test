@@ -4,7 +4,7 @@ services:
     image: build
     build:
       context: ..
-      dockerfile: ./prod/Dockerfiles/build.Dockerfile
+      dockerfile: ./build/Dockerfiles/build.Dockerfile
   app:
     image: app
     depends_on: 
