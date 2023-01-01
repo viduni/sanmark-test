@@ -7,4 +7,4 @@ up:
 up-f:
 	DOCKER_BUILDKIT=0 docker compose up --build --remove-orphans
 build:
-	DOCKER_BUILDKIT=0 docker compose build
+	docker compose build
