@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -y git unzip
 RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && apt-get install -y nodejs && npm i -g npm
 WORKDIR /var/www/html/
-COPY ./src/ .
+COPY ../src/ .
 # RUN composer install
 RUN npm install
 RUN npm run build

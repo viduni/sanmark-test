@@ -3,8 +3,8 @@ services:
   build:
     image: build
     build:
-      context: ..
-      dockerfile: ./build/Dockerfiles/build.Dockerfile
+      context: .
+      dockerfile: ./Dockerfiles/build.Dockerfile
       cache_from:
         - ghcr.io/viduni/sanmark-test/build:latest
   app:
