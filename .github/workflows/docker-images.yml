@@ -35,4 +35,4 @@ jobs:
       - run: docker push ghcr.io/viduni/sanmark-test/app:latest
       - run: docker push ghcr.io/viduni/sanmark-test/static:latest
       - run: docker push ghcr.io/viduni/sanmark-test/proxy:latest
-      - run: echo '...'
+      - run: echo '....'
