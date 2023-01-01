@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+  build:
+    image: build
+    build:
+      context: ..
+      dockerfile: ./prod/Dockerfiles/build.Dockerfile
+  app:
+    image: app
+    depends_on: 
+      - build
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/app.Dockerfile
+  static:
+    image: static
+    depends_on: 
+      - build
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/static.Dockerfile
+  proxy:
+    image: proxy
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/proxy.Dockerfile
+  
