@@ -5,23 +5,23 @@ services:
     build:
       context: ..
       dockerfile: ./build/Dockerfiles/build.Dockerfile
-  # app:
-  #   image: app
-  #   depends_on: 
-  #     - build
-  #   build: 
-  #     context: .
-  #     dockerfile: ./Dockerfiles/app.Dockerfile
-  # static:
-  #   image: static
-  #   depends_on: 
-  #     - build
-  #   build: 
-  #     context: .
-  #     dockerfile: ./Dockerfiles/static.Dockerfile
-  # proxy:
-  #   image: proxy
-  #   build:
-  #     context: .
-  #     dockerfile: ./Dockerfiles/proxy.Dockerfile
+  app:
+    image: app
+    depends_on: 
+      - build
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/app.Dockerfile
+  static:
+    image: static
+    depends_on: 
+      - build
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/static.Dockerfile
+  proxy:
+    image: proxy
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/proxy.Dockerfile
   
