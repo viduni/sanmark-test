@@ -11,5 +11,4 @@ jobs:
 
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: pwd
-      - run: ls -lah
+      - run: make build
