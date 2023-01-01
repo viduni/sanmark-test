@@ -14,26 +14,26 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - run: ls -lah
-      # - name: Log in to the Container registry
-      #   uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-      #   with:
-      #     registry: ${{ env.REGISTRY }}
-      #     username: ${{ github.actor }}
-      #     password: ${{ secrets.GITHUB_TOKEN }}
-      # - run: docker pull ghcr.io/viduni/sanmark-test/build:latest || true
-      # - run: docker pull ghcr.io/viduni/sanmark-test/app:latest || true
-      # - run: docker pull ghcr.io/viduni/sanmark-test/static:latest || true
-      # - run: docker pull ghcr.io/viduni/sanmark-test/proxy:latest || true
-      # - uses: satackey/action-docker-layer-caching@v0.0.11
-      #   continue-on-error: true
-      # - run: make build
-      # - run: docker images
-      # - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
-      # - run: docker tag app:latest ghcr.io/viduni/sanmark-test/app:latest
-      # - run: docker tag static:latest ghcr.io/viduni/sanmark-test/static:latest
-      # - run: docker tag proxy:latest ghcr.io/viduni/sanmark-test/proxy:latest
-      # - run: docker push ghcr.io/viduni/sanmark-test/build:latest
-      # - run: docker push ghcr.io/viduni/sanmark-test/app:latest
-      # - run: docker push ghcr.io/viduni/sanmark-test/static:latest
-      # - run: docker push ghcr.io/viduni/sanmark-test/proxy:latest
-      # - run: echo '....'
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker pull ghcr.io/viduni/sanmark-test/build:latest || true
+      - run: docker pull ghcr.io/viduni/sanmark-test/app:latest || true
+      - run: docker pull ghcr.io/viduni/sanmark-test/static:latest || true
+      - run: docker pull ghcr.io/viduni/sanmark-test/proxy:latest || true
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
+      - run: make build
+      - run: docker images
+      - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
+      - run: docker tag app:latest ghcr.io/viduni/sanmark-test/app:latest
+      - run: docker tag static:latest ghcr.io/viduni/sanmark-test/static:latest
+      - run: docker tag proxy:latest ghcr.io/viduni/sanmark-test/proxy:latest
+      - run: docker push ghcr.io/viduni/sanmark-test/build:latest
+      - run: docker push ghcr.io/viduni/sanmark-test/app:latest
+      - run: docker push ghcr.io/viduni/sanmark-test/static:latest
+      - run: docker push ghcr.io/viduni/sanmark-test/proxy:latest
+      - run: echo '....'
