@@ -6,33 +6,31 @@ services:
       context: ..
       dockerfile: ./build/Dockerfiles/build.Dockerfile
       cache_from:
-        - build:latest
         - ghcr.io/viduni/sanmark-test/build:latest
-  # app:
-  #   image: app
-  #   depends_on: 
-  #     - build
-  #   build: 
-  #     context: .
-  #     dockerfile: ./Dockerfiles/app.Dockerfile
-  #     cache_from:
-  #       - ghcr.io/viduni/sanmark-test/build:latest
-  #       - ghcr.io/viduni/sanmark-test/app:latest
-  # static:
-  #   image: static
-  #   depends_on: 
-  #     - build
-  #   build: 
-  #     context: .
-  #     dockerfile: ./Dockerfiles/static.Dockerfile
-  #     cache_from:
-  #       - ghcr.io/viduni/sanmark-test/build:latest
-  #       - ghcr.io/viduni/sanmark-test/static:latest
-  # proxy:
-  #   image: proxy
-  #   build:
-  #     context: .
-  #     dockerfile: ./Dockerfiles/proxy.Dockerfile
-  #     cache_from:
-  #       - ghcr.io/viduni/sanmark-test/proxy:latest
-  
+  app:
+    image: app
+    depends_on: 
+      - build
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/app.Dockerfile
+      cache_from:
+        - ghcr.io/viduni/sanmark-test/build:latest
+        - ghcr.io/viduni/sanmark-test/app:latest
+  static:
+    image: static
+    depends_on: 
+      - build
+    build: 
+      context: .
+      dockerfile: ./Dockerfiles/static.Dockerfile
+      cache_from:
+        - ghcr.io/viduni/sanmark-test/build:latest
+        - ghcr.io/viduni/sanmark-test/static:latest
+  proxy:
+    image: proxy
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/proxy.Dockerfile
+      cache_from:
+        - ghcr.io/viduni/sanmark-test/proxy:latest
