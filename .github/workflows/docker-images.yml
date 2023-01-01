@@ -20,19 +20,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: docker pull ghcr.io/viduni/sanmark-test/build:latest || true
-      - run: docker pull ghcr.io/viduni/sanmark-test/app:latest || true
-      - run: docker pull ghcr.io/viduni/sanmark-test/static:latest || true
-      - run: docker pull ghcr.io/viduni/sanmark-test/proxy:latest || true
+      # - run: docker pull ghcr.io/viduni/sanmark-test/app:latest || true
+      # - run: docker pull ghcr.io/viduni/sanmark-test/static:latest || true
+      # - run: docker pull ghcr.io/viduni/sanmark-test/proxy:latest || true
       - run: docker tag ghcr.io/viduni/sanmark-test/build:latest build:latest || true
-      - run: docker tag ghcr.io/viduni/sanmark-test/app:latest app:latest || true
-      - run: docker tag ghcr.io/viduni/sanmark-test/static:latest static:latest || true
-      - run: docker tag ghcr.io/viduni/sanmark-test/proxy:latest proxy:latest || true
+      # - run: docker tag ghcr.io/viduni/sanmark-test/app:latest app:latest || true
+      # - run: docker tag ghcr.io/viduni/sanmark-test/static:latest static:latest || true
+      # - run: docker tag ghcr.io/viduni/sanmark-test/proxy:latest proxy:latest || true
       - run: make build
       - run: docker tag build:latest ghcr.io/viduni/sanmark-test/build:latest
-      - run: docker tag app:latest ghcr.io/viduni/sanmark-test/app:latest
-      - run: docker tag static:latest ghcr.io/viduni/sanmark-test/static:latest
-      - run: docker tag proxy:latest ghcr.io/viduni/sanmark-test/proxy:latest
+      # - run: docker tag app:latest ghcr.io/viduni/sanmark-test/app:latest
+      # - run: docker tag static:latest ghcr.io/viduni/sanmark-test/static:latest
+      # - run: docker tag proxy:latest ghcr.io/viduni/sanmark-test/proxy:latest
       - run: docker push ghcr.io/viduni/sanmark-test/build:latest
-      - run: docker push ghcr.io/viduni/sanmark-test/app:latest
-      - run: docker push ghcr.io/viduni/sanmark-test/static:latest
-      - run: docker push ghcr.io/viduni/sanmark-test/proxy:latest
+      # - run: docker push ghcr.io/viduni/sanmark-test/app:latest
+      # - run: docker push ghcr.io/viduni/sanmark-test/static:latest
+      # - run: docker push ghcr.io/viduni/sanmark-test/proxy:latest
