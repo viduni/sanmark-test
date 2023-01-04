@@ -52,7 +52,12 @@ class NoteController extends Controller
 
     public function update(Request $request, $id)
     {
-        dd($request,$id);
+        $note = Note::find((int)$id);
+        $note->title = $request->title;
+        $note->description = $request->description;
+        $note->save();
+
+        return redirect()->route('note.index');
     }
 
     /**
@@ -63,7 +68,8 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $note = Note::find((int)$id);
+        $note->delete();
     }
 
     private function getNoteHandler(): NoteHandler
