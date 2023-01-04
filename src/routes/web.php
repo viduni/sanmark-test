@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
         ->name('note.')
         ->group(function (){
             Route::patch('updateNote/{id}',[NoteController::class, 'updateNote'])->name('updateNote');
+            Route::get('/delete/{id}',[NoteController::class, 'deleteView'])->name('delete');
         });
 });
 

@@ -70,6 +70,14 @@ class NoteController extends Controller
     {
         $note = Note::find((int)$id);
         $note->delete();
+    
+        return redirect()->route('note.index')->with('success','Note has been deleted successfully');
+    }
+
+    public function deleteView($id)
+    {
+        $note = Note::find((int)$id);
+        return view('note.delete', compact('note'));
     }
 
     private function getNoteHandler(): NoteHandler
