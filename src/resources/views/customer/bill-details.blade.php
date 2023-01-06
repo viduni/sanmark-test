@@ -35,7 +35,7 @@
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                         id="inline-full-name" 
                         type="text" 
-                        value="{{$lastReadingDate}}"
+                        value="{{$lastReadingRecord->reading_date}}"
                         readonly
                     >
                     </div>
@@ -51,7 +51,8 @@
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                         id="inline-full-name" 
                         type="text" 
-                        value="Jane Doe"
+                        value="{{$previousReadingRecord->reading_date}}"
+                        readonly
                     >
                     </div>
                 </div>
@@ -66,7 +67,8 @@
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                         id="inline-full-name" 
                         type="text" 
-                        value="Jane Doe"
+                        value="{{$lastReadingRecord->reading_value}}"
+                        readonly
                     >
                     </div>
                 </div>
@@ -81,7 +83,8 @@
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                         id="inline-full-name" 
                         type="text" 
-                        value="Jane Doe"
+                        value="{{$previousReadingRecord->reading_value}}"
+                        readonly
                     >
                     </div>
                 </div>
@@ -96,7 +99,8 @@
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
                         id="inline-full-name" 
                         type="text" 
-                        value="Jane Doe"
+                        value="Rs.{{$fixedChargeAmount}}"
+                        readonly
                     >
                     </div>
                 </div>
@@ -107,7 +111,13 @@
                     </label>
                     </div>
                     <div class="md:w-2/3">
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" value="Jane Doe">
+                    <input 
+                        class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" 
+                        id="inline-full-name" 
+                        type="text" 
+                        value="Jane Doe"
+                        readonly
+                    >
                     </div>
                 </div>
                 <div class="md:flex md:items-center mb-6">
@@ -122,6 +132,7 @@
                         id="inline-full-name" 
                         type="text" 
                         value="Jane Doe"
+                        readonly
                     >
                     </div>
                 </div>
@@ -137,6 +148,7 @@
                         id="inline-full-name" 
                         type="text" 
                         value="Jane Doe"
+                        readonly
                     >
                     </div>
                 </div>
@@ -152,6 +164,7 @@
                         id="inline-full-name" 
                         type="text" 
                         value="Jane Doe"
+                        readonly
                     >
                     </div>
                 </div>
