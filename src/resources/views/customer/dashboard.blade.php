@@ -7,8 +7,9 @@
             </div>
             
             <div class="mt-3">
-            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 p-6">
-                    
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 p-6"  action="{{ route('customer.billDetails') }}" method="POST">
+                    @csrf
+                    @method('POST')
                     <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="customer_account_number">
                         Account Number

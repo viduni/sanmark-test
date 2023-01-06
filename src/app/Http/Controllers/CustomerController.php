@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CustomerRequest;
 
 class CustomerController extends Controller
 {
@@ -10,4 +10,14 @@ class CustomerController extends Controller
     {
         return view('customer.dashboard');
     } 
+
+    public function billDetails(CustomerRequest $request)
+    {
+        $customerAccountNumber = $request->customer_account_number;
+        
+        return view('customer.bill-details')
+        ->with([
+            'customerAccountNumber' => $customerAccountNumber
+        ]);
+    }
 }

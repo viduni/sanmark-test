@@ -20,14 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/customer', function () {
-    Route::prefix('customer')->name('customer.')->group(function () {
-        Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('dashboard');
-       
-    });
-    
+
+Route::prefix('customer')->name('customer.')->group(function () {
+    Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('dashboard');
+    Route::post('/bill-details', [CustomerController::class, 'billDetails'])->name('billDetails');
     
 });
+    
 
 Route::get('/dashboard', function () {
     return view('dashboard');
