@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MeterReaderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,11 +21,11 @@ Route::get('/', function () {
 });
 
 Route::get('/customer', function () {
-    // Route::prefix('customer')->name('customer.')->group(function () {
-    //     Route::get('/dashboard', [MeterReaderController::class, 'readingDashboard'])->name('dashboard');
+    Route::prefix('customer')->name('customer.')->group(function () {
+        Route::get('/dashboard', [CustomerController::class, 'dashboard'])->name('dashboard');
        
-    // });
-    return view('customer.dashboard');
+    });
+    
     
 });
 
