@@ -27,8 +27,10 @@ class CustomerController extends Controller
             ->orderBy('id','desc')
             ->first();
 
+        $unitsCount = $previousReadingRecord->reading_value - $lastReadingRecord->reading_value;
+
         $billedRange = $this->getCustomerHandler()
-            ->getBilledRange($lastReadingRecord->reading_date,$previousReadingRecord->reading_date,$lastReadingRecord->reading_value);
+            ->getBilledRange($lastReadingRecord->reading_date,$previousReadingRecord->reading_date,$unitsCount);
 
         $billedDateDifference = $this->getCustomerHandler()
             ->getDateRange($lastReadingRecord->reading_date,$previousReadingRecord->reading_date);
@@ -40,23 +42,22 @@ class CustomerController extends Controller
 
         if ($billedRange == BillingRangeConstants::FIRST_RANGE) {
             $fixedChargeAmount = BillingRangeConstants::FIRST_RANGE_FIXED_CHARGE;
-            $firstRangeBilledAmmount = $this->getCustomerHandler()->getFirstRangeBilledAmount($lastReadingRecord->reading_value,$billedDateDifference);
+            $firstRangeBilledAmmount = $this->getCustomerHandler()->getFirstRangeBilledAmount($unitsCount,$billedDateDifference);
 
         } elseif($billedRange == BillingRangeConstants::SECOND_RANGE) {
             $fixedChargeAmount = BillingRangeConstants::SECOND_RANGE_FIXED_CHARGE;
-            $firstRangeBilledAmmount = $this->getCustomerHandler()->getFirstRangeBilledAmount($lastReadingRecord->reading_value,$billedDateDifference);
-            $secondRangeBilledAmount = $this->getCustomerHandler()->getSecondRangeBilledAmount($lastReadingRecord->reading_value,$billedDateDifference);
+            $firstRangeBilledAmmount = $this->getCustomerHandler()->getFirstRangeBilledAmount($unitsCount,$billedDateDifference);
+            $secondRangeBilledAmount = $this->getCustomerHandler()->getSecondRangeBilledAmount($unitsCount,$billedDateDifference);
 
         } else {
             $fixedChargeAmount = BillingRangeConstants::THIRD_RANGE_FIXED_CHARGE;
-            $firstRangeBilledAmmount = $this->getCustomerHandler()->getFirstRangeBilledAmount($lastReadingRecord->reading_value,$billedDateDifference);
-            $secondRangeBilledAmount = $this->getCustomerHandler()->getSecondRangeBilledAmount($lastReadingRecord->reading_value,$billedDateDifference);
-            $thirdRangeBilledAmount = $this->getCustomerHandler()->getThirdRangeBilledAmount($lastReadingRecord->reading_value,$billedDateDifference);
+            $firstRangeBilledAmmount = $this->getCustomerHandler()->getFirstRangeBilledAmount($unitsCount,$billedDateDifference);
+            $secondRangeBilledAmount = $this->getCustomerHandler()->getSecondRangeBilledAmount($unitsCount,$billedDateDifference);
+            $thirdRangeBilledAmount = $this->getCustomerHandler()->getThirdRangeBilledAmount($unitsCount,$billedDateDifference);
         }
 
         $totalBillAmount = $fixedChargeAmount + $firstRangeBilledAmmount + $secondRangeBilledAmount + $thirdRangeBilledAmount;
 
-            // dd($previousReading,$previousReadingDate);
         return view('customer.bill-details')
             ->with([
                 'customerAccountNumber' => $customerAccountNumber,
