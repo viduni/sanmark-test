@@ -27,7 +27,7 @@ class CustomerController extends Controller
             ->orderBy('id','desc')
             ->first();
 
-        $unitsCount = $previousReadingRecord->reading_value - $lastReadingRecord->reading_value;
+        $unitsCount = $lastReadingRecord->reading_value - $previousReadingRecord->reading_value;
 
         $billedRange = $this->getCustomerHandler()
             ->getBilledRange($lastReadingRecord->reading_date,$previousReadingRecord->reading_date,$unitsCount);
